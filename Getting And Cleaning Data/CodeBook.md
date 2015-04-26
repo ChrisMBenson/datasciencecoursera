@@ -24,13 +24,15 @@ The combined subset is further reduced by calculating the mean of the observatio
 As part of the _tidying_ process the variable names are cleaned up using the following transformations.
 
 ```R
-filtered_feature_names <- gsub("\\(\\)", "", filtered_feature_names)
-filtered_feature_names <- gsub("Acc", "-acceleration", filtered_feature_names)
-filtered_feature_names <- gsub("Mag", "-Magnitude", filtered_feature_names)
-filtered_feature_names <- gsub("^t(.*)$", "\\1-time", filtered_feature_names)
-filtered_feature_names <- gsub("^f(.*)$", "\\1-frequency", filtered_feature_names)
-filtered_feature_names <- gsub("(Jerk|Gyro)", "-\\1", filtered_feature_names)
-filtered_feature_names <- gsub("BodyBody", "Body", filtered_feature_names)
+descriptive_feature_names <- features[filter_features]
+descriptive_feature_names <- gsub("\\(\\)", "", descriptive_feature_names)
+descriptive_feature_names <- gsub("Acc", "-acceleration", descriptive_feature_names)
+descriptive_feature_names <- gsub("Mag", "-Magnitude", descriptive_feature_names)
+descriptive_feature_names <- gsub("^t(.*)$", "\\1-time", descriptive_feature_names)
+descriptive_feature_names <- gsub("^f(.*)$", "\\1-frequency", descriptive_feature_names)
+descriptive_feature_names <- gsub("(Jerk|Gyro)", "-\\1", descriptive_feature_names)
+descriptive_feature_names <- gsub("BodyBody", "Body", descriptive_feature_names)
+descriptive_feature_names <- tolower(descriptive_feature_names)
 ```
 
 And finally all variable names are converted into lowercase.
